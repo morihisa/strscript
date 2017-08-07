@@ -13,7 +13,7 @@
 4. 操作したい文字列を入力して「うりゃ!」ボタンをクリック
 
 ※解説は次のブログ記事を確認してください。
-- http://www.morihi-soc.net/
+- [ログ分析の注意点と文字列操作スクリプト公開(morihi-soc.net)](http://www.morihi-soc.net/?p=741)
 
 ## 動作確認済ブラウザ
 - Firefox 54.0.1
