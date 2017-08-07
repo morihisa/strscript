@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>ブラウザで完結! 文字列操作スクリプト</title>
+<script type="text/javascript">
+function urya(){
+	var s = document.fms.txtasrc.value;
+	try {
+	if (s.length >= 1) {
+		// デコード
+		if (document.fmt.typedec.checked) {
+			if (document.fmk.typeurl.checked) {
+				s = decodeURIComponent(s);
+			} else if (document.fmk.typebase64.checked) {
+				s = window.atob(s);
+			} else if (document.fmk.typehex.checked) {
+				var result="";
+				for(var i=0; i<s.length; ++i) {
+					if (i%2 == 0) {
+						result += "%";
+					}
+					var hex = s.charAt(i);
+					result += hex;
+				}
+				s = decodeURIComponent(result);
+			}
+			document.fmd.txtadst.value = s;
+
+		// エンコード
+		} else if (document.fmt.typeenc.checked) {
+			if (document.fmk.typeurl.checked) {
+				s = encodeURIComponent(s);
+			} else if (document.fmk.typebase64.checked) {
+				s = window.btoa(s);
+			} else if (document.fmk.typehex.checked) {
+				var result="";
+				for(var i=0; i<s.length; ++i) {
+					var hex = s.charCodeAt(i).toString(16);
+					result += hex;
+				}
+				s = result;
+			}
+			document.fmd.txtadst.value = s;
+		}
+	}
+	} catch (e) {
+		alert("ERROR:入力内容を正常に処理できませんでした。\n理由:\n" + e);
+	}
+}
+
+function reset(){
+	document.fms.txtasrc.value = "";
+	document.fmd.txtadst.value = "";
+}
+</script>
+</head>
+
+<body>
+<h1>ブラウザで完結! 文字列操作スクリプト version 1.0</h1>
+
+<form name="fmk">
+<input type="radio" id="typeurl" name="typegroup1" value="decode" checked>URL(%)
+<input type="radio" id="typebase64" name="typegroup1" value="encode">BASE64
+<input type="radio" id="typehex" name="typegroup1" value="encode">HEX
+</form>
+
+<form name="fmt">
+<input type="radio" id="typedec" name="typegroup2" value="decode" checked>デコード
+<input type="radio" id="typeenc" name="typegroup2" value="encode">エンコード
+</form>
+
+<input type="button" value="うりゃ!" onclick="urya()">
+<input type="button" value="クリア" onclick="reset()">
+<br>
+
+<div style="display:flex">
+<form name="fms">
+<textarea name="txtasrc" style="width:600px;height:400px" placeholder="ここに入力">
+</textarea>
+</form>
+
+&nbsp;
+
+<form name="fmd">
+<textarea name="txtadst" style="width:600px;height:400px" placeholder="結果">
+</textarea>
+</form>
+</div>
+
+(c) 2017 <a href="http://www.morihi-soc.net/">morihi-soc.net</a>
+</body>
+</html>
