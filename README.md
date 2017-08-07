@@ -12,15 +12,15 @@
 3. デコード/エンコードのどちらかを選択する
 4. 操作したい文字列を入力して「うりゃ!」ボタンをクリック
 
+※解説は次のブログ記事を確認してください。
+- http://www.morihi-soc.net/
+
 ## 動作確認済ブラウザ
 - Firefox 54.0.1
 - Safari 10.1.2
 - Chrome 60
 - Internet Explorer 11
 - Microsoft Edge 40
-
-解説は次のブログ記事を確認してください。
-http://www.morihi-soc.net/
 
 ## Licence
 
